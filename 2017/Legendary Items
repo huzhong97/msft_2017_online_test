@@ -1,0 +1,20 @@
+def getNextLegendaryExpectation(_p,_q):
+    _p=_p/100
+    extraQuests=1.0
+    leastQuests=1.0
+    while(1):
+        extraQuests *=(1-_p)
+        leastQuests +=extraQuests   
+        _p +=_q
+        if(_p >= 1.0):
+            break
+    return leastQuests
+ExpectationQuests=0
+print("1≤N≤10^6  1≤P，Q≤100：")
+N,P,Q=(int(x) for x in input("输入：").split(" "))
+print(N,P,Q)
+Q=Q/100
+for i in range(N):
+    ExpectationQuests +=getNextLegendaryExpectation(P,Q)
+    P=P//2
+print("the result is %.2f" % ExpectationQuests)
